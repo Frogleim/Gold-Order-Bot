@@ -105,7 +105,8 @@ def yes_answer(call):
     data = [d]
     save_in_gspread.save_orders_data(data)
     channel_username = 'goldcenter_fix'
-    bot.send_message(call.message.chat.id, "Շնորհակալություն, ֆիքսելու համար!\nՍեխմեք /new_fix նոր քաշ ֆիքսելու համար։")
+    bot.send_message(call.message.chat.id, "Շնորհակալություն, ֆիքսելու համար! Կարող եք մոտենալ։\n"
+                                           "Սեխմեք /new_fix նոր քաշ ֆիքսելու համար")
     message = bot.send_message(chat_id='@' + channel_username, text=f'Նոր Ֆիքս՝ https://t.me/{d["username"]}\n'
                                                                     f'{d["gold"]},{d["weight"]} * '
                                                                     f'{d["current_price"]} = {d["total price"]}$'
