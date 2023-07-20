@@ -23,18 +23,14 @@ def save_orders_data(data):
     gs = gc.open_by_key(sheet_id)
     worksheet1 = gs.worksheet('Лист1')
 
-    # Read existing data into a DataFrame
-    existing_data = worksheet1.get_all_records()
-    df_existing = pd.DataFrame(existing_data)
+    data[0]['total price'] = int(data[0]['total price'])
+    data[0]['current_price'] = float(data[0]['current_price'])
+    data[0]['weight'] = float(data[0]['weight'])
 
-    # Convert the new data into a DataFrame
-    df_new = pd.DataFrame(data)
-
-    # Append new data to the existing DataFrame
-    df_combined = pd.concat([df_existing, df_new], ignore_index=True)
+    # Append the new row to the worksheet
+    worksheet1.append_row([data[0]['username'], data[0]['gold'], data[0]['total price'], data[0]['current_price'], data[0]['weight']])
 
     # Update the worksheet with the combined DataFrame
-    set_with_dataframe(worksheet=worksheet1, dataframe=df_combined, include_index=False,
-                       include_column_header=True, resize=True)
+
 
     print("Saved successfully")
