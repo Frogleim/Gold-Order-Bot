@@ -38,7 +38,9 @@ def handle_callback(call):
         btn2 = types.KeyboardButton(text='20')
         btn3 = types.KeyboardButton(text='50')
         btn4 = types.KeyboardButton(text='100')
-        markup.add(btn1, btn2, btn3, btn4)
+        btn5 = types.KeyboardButton(text='200')
+        btn6 = types.KeyboardButton(text='300')
+        markup.add(btn1, btn2, btn3, btn4, btn5, btn6)
         bot.send_message(call.message.chat.id, "Մուտքագրեք կամ Ընտրեք քաշը՝", reply_markup=markup)
     if call.data == 'price_999':
         btn1 = types.KeyboardButton(text='10')
