@@ -123,4 +123,7 @@ def yes_answer(call):
     bot.send_message(call.message.chat.id, "Սեխմեք /new_fix հրահանգը կրկին փորցելու համար")
 
 
-bot.polling(none_stop=True, interval=0)
+try:
+    bot.polling(none_stop=True, interval=0)
+except Exception as e:
+    print(e)
