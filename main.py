@@ -1,4 +1,8 @@
+import time
+import sys
+from requests.exceptions import ConnectionError, ReadTimeout
 import telebot
+import os
 import config as conf
 from telebot import types
 import get_gold_prices
@@ -124,6 +128,9 @@ def yes_answer(call):
 
 
 try:
-    bot.polling(none_stop=True, interval=0)
-except Exception as e:
-    print(e)
+    bot.infinity_polling(timeout=10, long_polling_timeout=5)
+except (ConnectionError, ReadTimeout) as e:
+    sys.stdout.flush()
+    os.execv(sys.argv[0], sys.argv)
+else:
+    bot.infinity_polling(timeout=10, long_polling_timeout=5)
